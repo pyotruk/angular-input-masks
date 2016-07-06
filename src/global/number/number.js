@@ -27,8 +27,8 @@ function NumberMaskDirective($locale, $parse, PreFormatters, NumberMasks) {
 					return null;
 				}
 
-				var valueToFormat = PreFormatters.clearDelimitersAndLeadingZeros(value) || '';
-				var formatedValue = viewMask.apply(valueToFormat);
+				var valueToFormat = PreFormatters.clearDelimitersAndLeadingZeros(value) || '0';
+				var formatedValue = viewMask.apply(valueToFormat !== '0' ? valueToFormat : '');
 				var actualNumber = parseFloat(modelMask.apply(valueToFormat));
 
 				if (angular.isDefined(attrs.uiNegativeNumber)) {
